@@ -7,6 +7,9 @@ const app = require('.');
 //services
 const { HomeService } = require('../services');
 
+//models
+const { User, Comment, Idea } = require('../models');
+
 //controllers
 const { HomeController } = require('../controllers');
 
@@ -29,6 +32,11 @@ container
   })
   .register({
     HomeRoutes: asFunction(HomeRoutes).singleton()
+  })
+  .register({
+    User: asValue(User),
+    Comment: asValue(Comment),
+    Idea: asValue(Idea)
   });
 
 module.exports = container;
