@@ -13,13 +13,14 @@ class IdeaController {
   }
 
   async index(req, res) {
-    const ideas = await _ideaService.index();
+    const { pageSize, pageNum } = req.params;
+    const ideas = await _ideaService.index(pageSize, pageNum);
 
     return res.send(ideas);
   }
 
   async create(req, res) {
-    const { body } = req.params;
+    const { body } = req;
     const newIdea = await _ideaService.create(body);
 
     return res.status(201).send(newIdea);

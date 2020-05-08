@@ -3,8 +3,8 @@ class BaseService {
     this.repository = repository;
   }
 
-  async index() {
-    return await this.repository.index();
+  async index(pageSize, pageNum) {
+    return await this.repository.index(pageSize, pageNum);
   }
 
   async show(id) {

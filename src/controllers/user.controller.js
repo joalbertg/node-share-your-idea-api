@@ -13,7 +13,8 @@ class UserController {
   }
 
   async index(req, res) {
-    const users = await _userService.index();
+    const { pageSize, pageNum } = req.query;
+    const users = await _userService.index(pageSize, pageNum);
 
     return res.send(users);
   }

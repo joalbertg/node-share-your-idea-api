@@ -1,10 +1,12 @@
 
 const { Router } = require('express');
 
+const { AuthMiddleware, ParseIntMiddleware } = require('../middlewares');
+
 module.exports = function({ IdeaController }) {
   const router = Router();
 
-  router.get('/', IdeaController.index);
+  router.get('/', [ParseIntMiddleware], IdeaController.index);
   router.get('/:ideaId', IdeaController.show);
   router.get('/:userId/index', IdeaController.getUserIdeas);
   router.post("/", IdeaController.create);
