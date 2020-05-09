@@ -6,16 +6,17 @@ class CommentController {
   }
 
   async show(req, res) {
-    const { CommentId } = req.params;
-    const comment = await _commentService.show(userId);
+    const { commentId } = req.params;
+    const comment = await _commentService.show(commentId);
 
     return res.send(comment);
   }
 
   async createComments(req, res) {
-    const { body } = req.params;
-    const ideaId = req.params;
-    const newComment = await _commentService.create(body, ideaId);
+    const { body } = req;
+    const { ideaId }  = req.params;
+    const { id: userId } = req.user;
+    const newComment = await _commentService.createComment(body, ideaId, userId);
 
     return res.status(201).send(newComment);
   }

@@ -17,11 +17,11 @@ class IdeaService extends BaseService {
       throw error;
     }
 
-    return await _ideaRepository.getUserIdeas(autor);
+    return await _ideaRepository.getUserIdeas(author);
   }
 
   async upvoteIdea(ideaId) {
-    if(!author) {
+    if(!ideaId) {
       const error = new Error();
       error.status = 400;
       error.message = 'ideaId must be send.';
@@ -45,7 +45,7 @@ class IdeaService extends BaseService {
   }
 
   async downvoteIdea(ideaId) {
-    if(!author) {
+    if(!ideaId) {
       const error = new Error();
       error.status = 400;
       error.message = 'ideaId must be send.';
