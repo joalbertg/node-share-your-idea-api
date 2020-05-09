@@ -10,10 +10,10 @@ const { CacheTime } = require('../helpers');
 module.exports = function({ UserController }) {
   const router = Router();
 
-  router.get('/', [AuthMiddleware, ParseIntMiddleware, CacheMiddleware(CacheTime.ONE_HOUR)], UserController.index);
+  router.get('/', [ParseIntMiddleware, CacheMiddleware(CacheTime.ONE_HOUR)], UserController.index);
   router.get('/:userId', UserController.show);
-  router.patch('/:userId', UserController.update);
-  router.delete('/:userId', UserController.delete);
+  router.patch('/:userId', [AuthMiddleware], UserController.update);
+  router.delete('/:userId', [AuthMiddleware], UserController.delete);
 
   return router;
 }
