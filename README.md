@@ -1,4 +1,6 @@
-# Express 
+# [La Biblia de Node.ja]: Architecture for APIs
+
+[![Build Status](https://travis-ci.com/joalbertg/node-share-your-idea-api.svg?branch=master&status=passed)](https://travis-ci.com/joalbertg/node-share-your-idea-api)
 
 ## step 1
 
@@ -12,5 +14,9 @@ docker-compose run app npm install -D dotenv nodemon mockingoose jest
 
 ```shell
 docker-compose up --build
+```
+
+```shell
+docker-compose up
 ```
 
